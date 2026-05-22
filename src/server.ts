@@ -6,3 +6,4 @@ console.log(currentTime);
 
 const person: string = "Sam";
 const count: number = 100;
+console.log("==========");

@@ -6,23 +6,10 @@ stringni qaytarsin. MASALAN: reverseSentence("we like coding!")
 return "ew ekil gnidoc".
 
 @MITASK */
-
-function reverse(soz: string): string {
-  let suz1: string = "";
-  let suz2: string = "";
-
-  for (let i = 0; i < soz.length; i++) {
-    let count = soz[i];
-
-    if (count !== " ") {
-      suz2 = count + suz2;
-    } else {
-      suz1 = suz1 + suz2 + " ";
-      suz2 = "";
-    }
-  }
-
-  return suz1 + suz2;
+function getReversed(str: string): string {
+  let words = str.split(" ").map((word) => word.split("").reverse().join(""));
+  return words.join(" ");
 }
 
-console.log(reverse("mening farishtang juda ajoyib"));
+const result = getReversed("Mening farishtam ");
+console.log(result);
