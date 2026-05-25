@@ -14,4 +14,4 @@ app.set("view engine", "ejs");
 
 /**  4 - ROUTER **/
 
-export default app;
+export default app; // module export app
