@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import router from "./router";
 
 /**  1 - ENTRANSE  **/
 const app = express();
@@ -13,5 +14,6 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 /**  4 - ROUTER **/
+app.use("/", router); // Middlewere Disgn pattern
 
 export default app; // module export app
