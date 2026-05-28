@@ -33,3 +33,29 @@ const newList = list.map((ele) => {
   };
 });
 console.log("newList:", newList);
+/* N-TASK
+
+Shunday function yozing, u string qabul qilsin va string palindrom 
+yani togri oqilganda ham, orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
+MASALAN: palindromCheck("dad") return true; palindromCheck("son") return false.
+
+@MITASK
+*/
+
+function palindromCheck(word1: string) {
+  let word2 = word1.split("").reverse().join("");
+  return word2 === word1;
+}
+
+console.log(palindromCheck("dad")); // true
+console.log(palindromCheck("son")); // false
+console.log(palindromCheck("non"));
+console.log(palindromCheck("somsa"));
+console.log(palindromCheck("mit"));
+console.log(palindromCheck("mom"));
+function palindromCheck1(word3: string) {
+  let word4 = word3.split("").reverse().join("");
+  return word4 === word3;
+}
+console.log(palindromCheck1("dad"));
+console.log(palindromCheck1("mom"));
