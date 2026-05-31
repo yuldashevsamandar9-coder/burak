@@ -4,6 +4,7 @@ import { T } from "../libs/types/common";
 const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
   try {
+    console.log("goHome");
     res.send("Home.page ");
   } catch (err) {
     console.log("Eroor go home", err);
