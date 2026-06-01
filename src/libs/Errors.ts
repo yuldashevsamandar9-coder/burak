@@ -18,7 +18,7 @@ export enum Message {
 
 class Errors extends Error {
   public code: HttpCode;
-  public code: Message;
+  public message: string;
 
   constructor(statusCode: HttpCode, statusMessage: Message) {
     super();
