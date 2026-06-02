@@ -3,6 +3,7 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/Member.enum";
+import { LoginInput } from "../libs/types/member";
 
 const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
@@ -32,12 +33,19 @@ restaurantController.getSignup = (req: Request, res: Response) => {
   }
 };
 
-restaurantController.processLogin = (req: Request, res: Response) => {
+restaurantController.processLogin = async (req: Request, res: Response) => {
   try {
     console.log("processLogin");
-    res.send("DONE");
+    console.log("body:", req.body);
+    const input: LoginInput = req.body;
+
+    const memberService = new MemberService();
+    const result = await memberService.processLogin(input);
+
+    res.send(result);
   } catch (err) {
     console.log("Eroor go processLogin ", err);
+    res.send(err);
   }
 };
 
@@ -52,7 +60,7 @@ restaurantController.processSignup = async (req: Request, res: Response) => {
     const result = await memberService.processSignup(newMember);
     res.send("result");
   } catch (err) {
-    console.log("Eroor go processSignup ", err);
+    console.log("Errors go processSignup ", err);
     res.send(err);
   }
 };
