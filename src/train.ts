@@ -78,3 +78,23 @@ function calculateSumOfNumbers(arr: any[]): number {
 }
 
 console.log(calculateSumOfNumbers([7, "10", { son1: 5 }, true, 3]));
+
+/**
+ P-TASK
+
+Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib
+ arrayni qaytarsin.
+ MASALAN: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]].
+
+@MITASK
+ */
+
+function objectToArray(obj: any) {
+  let result: any[] = [];
+  for (let key in obj) {
+    let value = obj[key];
+    result.push([key, value]);
+  }
+  return result;
+}
+console.log(objectToArray({ samandar: 39, Sem: 30 }));
