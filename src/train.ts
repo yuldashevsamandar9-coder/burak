@@ -98,3 +98,17 @@ function objectToArray(obj: any) {
   return result;
 }
 console.log(objectToArray({ samandar: 39, Sem: 30 }));
+/**
+ * Q-TASK
+
+Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, 
+ikkinchisi string. Agar string parametr objectni propertysi bolsa true bolmasa false qaytarsin. 
+MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; hasProperty({name: "BMW", model: "M3"}, "year") return false.
+
+@MITASK
+ */
+function hasProperty(obj: object, str: string): boolean {
+  return str in obj;
+}
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
+console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));
