@@ -30,7 +30,7 @@ app.use(
       maxAge: 1000 * 3600 * 3, // 3 hours
     },
     store: store,
-    resave: true,
+    resave: true, // trueda belgilangan vaqt orasida qayta kirsak saytga yana vaqti yangilanadi
     saveUninitialized: true,
   }),
 );

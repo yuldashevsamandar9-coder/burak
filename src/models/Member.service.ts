@@ -48,6 +48,7 @@ class MemberService {
     return await this.memberModel.findById(member._id).lean().exec();
   }
   /** SPA REACT END */
+
   /** SSR  START */
   public async processSignup(input: MemberInput): Promise<Member> {
     const exist = await this.memberModel
