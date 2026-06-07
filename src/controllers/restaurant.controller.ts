@@ -4,7 +4,7 @@ import MemberService from "../models/Member.service";
 import { AdminRequest, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/Member.enum";
 import { LoginInput } from "../libs/types/member";
-import { Message } from "../libs/Errors";
+import Errors, { Message } from "../libs/Errors";
 
 const memberService = new MemberService();
 
@@ -24,6 +24,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
     res.render("Signup");
   } catch (err) {
     console.log("Eroor go getsignup ", err);
+    res.redirect("/admin");
   }
 };
 
@@ -33,6 +34,7 @@ restaurantController.getLogin = (req: Request, res: Response) => {
     res.render("Login");
   } catch (err) {
     console.log("Eroor go getLogin", err);
+    res.redirect("/admin");
   }
 };
 
@@ -56,7 +58,11 @@ restaurantController.processSignup = async (
     });
   } catch (err) {
     console.log("Errors go processSignup ", err);
-    res.send(err);
+    const message =
+      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+    res.send(
+      `<script>alert(" ${message}"); window.location.replace('admin/signup')  </script>`,
+    );
   }
 };
 
@@ -79,7 +85,23 @@ restaurantController.processLogin = async (
     res.send(result);
   } catch (err) {
     console.log("Error go processLogin ", err);
-    res.send(err);
+    const message =
+      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+    res.send(
+      `<script>alert(" ${message}"); window.location.replace('admin/login')  </script>`,
+    );
+  }
+};
+
+restaurantController.logout = async (req: AdminRequest, res: Response) => {
+  try {
+    console.log("logout");
+    req.session.destroy(function () {
+      res.redirect("/admin");
+    });
+  } catch (err) {
+    console.log("Error go processLogin ", err);
+    res.redirect("/admin");
   }
 };
 
@@ -89,7 +111,8 @@ restaurantController.checkAuthsession = async (
 ) => {
   try {
     console.log("checkAuthsession");
-    if (req.session?.member) res.send(`Hi, ${req.session.member.memberNick}`);
+    if (req.session?.member)
+      res.send(`<script>alert(" ${req.session.member.memberNick}") </script>`);
     else res.send(`<script>alert(" ${Message.NOT_AUTHECENTED} ") </script>`);
   } catch (err) {
     console.log("Error go checkAuthsession ", err);
