@@ -112,3 +112,26 @@ function hasProperty(obj: object, str: string): boolean {
 }
 console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
 console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));
+/**
+ 
+ R-TASK
+
+Shunday function yozing, u string parametrga ega bolsin.
+ String "1+2" holatda pass qilinganda string ichidagi sonlar yigindisini number holatda qaytarsin.
+  MASALAN: calculate("1+3") return 4.
+
+@MITASK
+ */
+// 1. Funksiyaga 'calculate' nomini berdik va turlarni (string, number) yozdik
+function calculate(str: string): number {
+  // 2. split natijasini 'arr' nomli o'zgaruvchiga oldik
+  let arr = str.split("+");
+
+  let son2 = Number(arr[0]);
+  let son3 = Number(arr[1]);
+
+  return son2 + son3;
+}
+
+console.log(calculate("1+3")); // Konsolda: 4
+console.log(calculate("50+20"));
