@@ -4,6 +4,7 @@ import { AdminRequest, Member, MemberInput } from "../libs/types/member";
 import Errors from "../libs/Errors";
 import ProductService from "../models/Product.service";
 import restaurantController from "./restaurant.controller";
+import makeUploader from "../libs/utils/uploader";
 
 const productService = new ProductService();
 const productController: T = {};
@@ -30,6 +31,7 @@ productController.getAllProducts = async (req: AdminRequest, res: Response) => {
 productController.createNewProduct = async (req: Request, res: Response) => {
   try {
     console.log("createProduct");
+    res.send("DONE");
 
     // TODO: TOKENS AUTHENTICATIONS
   } catch (err) {
