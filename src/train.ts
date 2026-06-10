@@ -134,3 +134,23 @@ function calculate(str: string): number {
 
 console.log(calculate("1+3"));
 console.log(calculate("50+20"));
+
+/**
+ * S-TASK
+
+Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni 
+topib uni return qilsin.
+ MASALAN: missingNumber([3, 0, 1]) return 2.
+
+@MITASK
+ */
+function missingNumber(nums: number[]) {
+  let count = 0;
+  for (let i = 0; i <= nums.length; i++) {
+    if (!nums.includes(i)) {
+      return i;
+    }
+  }
+}
+
+console.log(missingNumber([3, 0, 1, 5, 2]));
