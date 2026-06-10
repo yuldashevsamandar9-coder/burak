@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { T } from "../libs/types/common";
 import { AdminRequest, Member, MemberInput } from "../libs/types/member";
 import Errors from "../libs/Errors";
-import ProductService from "../models/Product.service";
+import ProductService from "../schema/Product.modul";
 import restaurantController from "./restaurant.controller";
 import makeUploader from "../libs/utils/uploader";
 
