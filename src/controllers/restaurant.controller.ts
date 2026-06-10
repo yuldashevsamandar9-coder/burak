@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { AdminRequest, MemberInput } from "../libs/types/member";
@@ -78,9 +78,7 @@ restaurantController.processLogin = async (
     // TODO: SESSIONS AUTHENTICATIONS
 
     req.session.member = result;
-    req.session.save(function () {
-      res.send(result);
-    });
+    req.session.save(function () {});
 
     res.send(result);
   } catch (err) {
@@ -88,7 +86,7 @@ restaurantController.processLogin = async (
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script>alert(" ${message}"); window.location.replace('admin/login')  </script>`,
+      `<script>alert(" ${message}"); window.location.replace('/admin/login')  </script>`,
     );
   }
 };
@@ -117,6 +115,23 @@ restaurantController.checkAuthsession = async (
   } catch (err) {
     console.log("Error go checkAuthsession ", err);
     res.send(err);
+  }
+};
+
+restaurantController.verifyRestaurant = (
+  req: AdminRequest,
+  res: Response,
+  next: NextFunction,
+) => {
+  if (req.session?.member?.memberType === MemberType.RESTAURANT) {
+    req.member = req.session.member;
+
+    next();
+  } else {
+    const message = Message.NOT_AUTHECENTED;
+    res.send(
+      `<script>alert("${message}"); window.location.replace('/admin/login'); </script>`,
+    );
   }
 };
 

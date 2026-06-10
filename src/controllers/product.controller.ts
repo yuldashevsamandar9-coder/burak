@@ -1,15 +1,17 @@
 import express, { Request, Response } from "express";
 import { T } from "../libs/types/common";
-import { Member, MemberInput } from "../libs/types/member";
+import { AdminRequest, Member, MemberInput } from "../libs/types/member";
 import Errors from "../libs/Errors";
 import ProductService from "../models/Product.service";
+import restaurantController from "./restaurant.controller";
 
 const productService = new ProductService();
 const productController: T = {};
 
-productController.getAllProducts = async (req: Request, res: Response) => {
+productController.getAllProducts = async (req: AdminRequest, res: Response) => {
   try {
     console.log("getAllProducts");
+    console.log("req.member:", req.member);
 
     // TODO: TOKENS AUTHENTICATIONS
 
