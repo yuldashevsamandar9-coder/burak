@@ -11,7 +11,11 @@ routerAdmin
   .post("/login", restaurantController.processLogin);
 routerAdmin
   .get("/signup", restaurantController.getSignup)
-  .post("/signup", restaurantController.processSignup);
+  .post(
+    "/signup",
+    makeUploader("members").single("memberImage"),
+    restaurantController.processSignup,
+  );
 routerAdmin.get("/logout", restaurantController.logout);
 routerAdmin.get("/check-me", restaurantController.checkAuthsession);
 
@@ -24,11 +28,11 @@ routerAdmin.get(
 routerAdmin.post(
   "/product/create",
   restaurantController.verifyRestaurant,
-  makeUploader("products").single("productImage"),
+  makeUploader("products").single("productImages"),
   productController.createNewProduct,
 );
 routerAdmin.post(
-  "/product/:id ",
+  "/product/:id",
   restaurantController.verifyRestaurant,
   productController.updateChosenProduct,
 );
