@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
@@ -36,7 +36,6 @@ memberController.signup = async (req: Request, res: Response) => {
 memberController.login = async (req: Request, res: Response) => {
   try {
     console.log(" Login");
-    console.log("body:", req.body);
     const input: LoginInput = req.body,
       result = await memberService.login(input);
     // TODO: TOKENS AUTHENTICATIONS
@@ -44,6 +43,8 @@ memberController.login = async (req: Request, res: Response) => {
     res.json({ member: result });
   } catch (err) {
     console.log("Error go Login ", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
     //res.json({});
   }
 };

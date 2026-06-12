@@ -17,8 +17,7 @@ routerAdmin
     restaurantController.processSignup,
   );
 routerAdmin.get("/logout", restaurantController.logout);
-routerAdmin.get("/check-me", restaurantController.checkAuthsession);
-
+routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 /** Product */
 routerAdmin.get(
   "/product/all",
@@ -28,7 +27,8 @@ routerAdmin.get(
 routerAdmin.post(
   "/product/create",
   restaurantController.verifyRestaurant,
-  makeUploader("products").single("productImages"),
+  //uploadProductImage.single('productImage'),
+  makeUploader("products").array("productImages", 5),
   productController.createNewProduct,
 );
 routerAdmin.post(
