@@ -40,7 +40,6 @@ class MemberService {
       input.memberPassword,
       member.memberPassword,
     );
-    // const isMatch = input.memberPassword === member.memberPassword;
 
     if (!isMatch) {
       throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
@@ -84,7 +83,6 @@ class MemberService {
       input.memberPassword,
       member.memberPassword,
     );
-    // const isMatch = input.memberPassword === member.memberPassword;
 
     if (!isMatch) {
       throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
