@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import app from "./app";
 
 mongoose
-  .connect(process.env.MONGO_URL as string, {})
+  .connect(process.env.MONGO_URL as string, {}) // bush obyekt keyinchalik malumot qushish uchun.
   .then((data) => {
     console.log(`Mongodb suceccfully`);
     const PORT = process.env.PORT ?? 3003;

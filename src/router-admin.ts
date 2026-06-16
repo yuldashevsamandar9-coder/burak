@@ -5,7 +5,7 @@ import productController from "./controllers/product.controller";
 import makeUploader from "./libs/utils/uploader";
 
 /** Restaurant */
-routerAdmin.get("/", restaurantController.goHome);
+routerAdmin.get("/", restaurantController.goHome); // get va post methoddn iborat 10 ta API bor
 routerAdmin
   .get("/login", restaurantController.getLogin)
   .post("/login", restaurantController.processLogin);
@@ -18,6 +18,9 @@ routerAdmin
   );
 routerAdmin.get("/logout", restaurantController.logout);
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
+
+/** Restaurant Finish */
+
 /** Product */
 routerAdmin.get(
   "/product/all",
@@ -38,5 +41,10 @@ routerAdmin.post(
 );
 
 /** User */
+routerAdmin.get(
+  "/user/all",
+  restaurantController.verifyRestaurant,
+  restaurantController.getUsers,
+);
 
 export default routerAdmin;
