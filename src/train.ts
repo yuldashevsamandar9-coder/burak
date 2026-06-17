@@ -169,3 +169,24 @@ const result1 = mergeSortedArrays([0, 3, 4, 35], [4, 63, 32]);
 console.log(result1);
 const result2 = mergeSortedArrays([0, 509, 29, 16], [66, 100, 500]);
 console.log(result2);
+
+/**
+ U-TASK
+
+Shunday function yozing, uni number parametri bolsin va 0 dan berilgan
+ parametrgacha bolgan oraliqdagi faqat toq sonlar nechtaligini return qilsin. 
+ MASALAN: sumOdds(9) return 4; sumOdds(11) return 5.
+
+@MITASK
+ */
+function sumOdds(num: number) {
+  let count = 0;
+  for (let i = 0; i < num; i++) {
+    if (i % 2 !== 0) count++;
+  }
+  return count;
+}
+console.log(sumOdds(25));
+console.log(sumOdds(100));
+console.log(sumOdds(11));
+console.log(sumOdds(9));
