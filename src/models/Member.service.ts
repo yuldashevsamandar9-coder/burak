@@ -107,7 +107,7 @@ class MemberService {
   public async updateChosenUser(input: MemberUpdateInput): Promise<Member> {
     input._id = shapeIntoMongooseObjectId(input._id);
     const result = await this.memberModel
-      .findByIdAndUpdate(input._id, input, { new: true })
+      .findByIdAndUpdate(input._id, input, { new: true }) // Burak // Nestar // Nestar
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
 
