@@ -236,3 +236,34 @@ function chunkArray(arr: any[], size: number) {
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 4));
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6));
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
+
+/**
+ * 
+ *X-TASK
+
+Shunday function yozing, uni object va string parapetrlari bolsin.
+ Function string parametri object ichida necha marotaba takrorlanganligini qaytarsin 
+ (nested object bolsa ham sanasin). MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2.
+
+@MITASK
+ */
+function countOccurrences(obj: any, str: string) {
+  let count = 0;
+  if (typeof obj === "object" && obj !== null) {
+    for (let key in obj) {
+      if (key === str) {
+        count++;
+      }
+      if (typeof obj[key] === "object" && obj[key] !== null) {
+        count += countOccurrences(obj[key], str);
+      }
+    }
+  }
+  return count;
+}
+console.log(
+  countOccurrences(
+    { model: "Bugatti", steer: { model: "HANKOOK", size: 30 } },
+    "model",
+  ),
+);
