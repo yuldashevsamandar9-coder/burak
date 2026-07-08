@@ -115,6 +115,17 @@ memberController.updateMember = async (req: ExtendedRequest, res: Response) => {
     else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
+memberController.getTopUsers = async (req: Request, res: Response) => {
+  try {
+    console.log("getTopUsers");
+    const result = await memberService.getTopUsers();
+    res.status(HttpCode.OK).json(result);
+  } catch (err) {
+    console.log("Error go getTopUsers ", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
 
 /** ============ DETAIL ============ */
 
