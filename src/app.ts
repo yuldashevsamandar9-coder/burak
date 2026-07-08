@@ -21,6 +21,7 @@ const store = new MongoDBStore({
 const app = express();
 app.use(express.static(path.join(__dirname, "public"))); // Middelwer
 app.use(express.urlencoded({ extended: true })); // Tradional Api
+app.use("/uploads", express.static("./uploads"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
