@@ -103,9 +103,33 @@ class MemberService {
 
     return result;
   }
+
+  public async addUserPoint(member: Member, point: number): Promise<Member> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
+
+    console.log("POINT MEMBER ID:", memberId);
+
+    const result = await this.memberModel
+      .findOneAndUpdate(
+        {
+          _id: memberId,
+        },
+        {
+          $inc: { memberPoints: point },
+        },
+        {
+          new: true,
+        },
+      )
+      .exec();
+
+    console.log("POINT RESULT:", result);
+
+    return result;
+  }
   /* SPA FINISH */
 
-  /* SSR */
+  /* BSSR */
 
   public async processSignup(input: MemberInput): Promise<Member> {
     const exist = await this.memberModel
