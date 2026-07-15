@@ -36,6 +36,21 @@ productController.getProducts = async (req: Request, res: Response) => {
   }
 };
 
+productController.getProduct = async (req: ExtendedRequest, res: Response) => {
+  try {
+    console.log("getProduct");
+    const id = req.params.id as string;
+    console.log(req.member);
+    const memberId = req.member?._id ? (req.member._id as any) : null,
+      result = await productService.getProduct(memberId, id);
+    res.status(HttpCode.OK).json(result);
+  } catch (err) {
+    console.log("Error, getProducts:", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
+
 /* SSR */
 
 productController.getAllProducts = async (req: Request, res: Response) => {
