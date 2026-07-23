@@ -5,7 +5,7 @@ import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 import cookieParser from "cookie-parser";
-
+import cors from "cors";
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
 import ConnectMongoDBSession from "connect-mongodb-session";
@@ -23,6 +23,12 @@ app.use(express.static(path.join(__dirname, "public"))); // Middelwer
 app.use(express.urlencoded({ extended: true })); // Tradional Api
 app.use("/uploads", express.static("./uploads"));
 app.use(express.json());
+app.use(
+  cors({
+    origin: true, // Frontend adresi
+    credentials: true, // agar cookie yoki session ishlatilayotgan bo'lsa
+  }),
+);
 app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 
