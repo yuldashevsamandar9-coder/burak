@@ -2,7 +2,7 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { T } from "../libs/types/common";
 import { ExtendedRequest } from "../libs/types/member";
 import { Response } from "express";
-import OrderService from "../models/order.service";
+import OrderService from "../models/Order.service";
 import { OrderStatus } from "../libs/enums/Order.enum";
 import { OrderInquiry, OrderUpdateInput } from "../libs/types/order";
 

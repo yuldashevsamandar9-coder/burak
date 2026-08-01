@@ -10,6 +10,7 @@ import { ProductInquiry } from "../libs/types/product";
 const productService = new ProductService();
 
 const productController: T = {};
+/**.   REACT UCHUN **/
 
 productController.getProducts = async (req: Request, res: Response) => {
   try {

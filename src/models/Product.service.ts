@@ -89,6 +89,9 @@ class ProductService {
             { new: true },
           )
           .exec();
+
+        console.log("DB result id:", result?._id?.toString());
+        console.log("DB result name:", result?.productName);
       }
     }
 
